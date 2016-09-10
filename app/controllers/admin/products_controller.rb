@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :show, :create, :update, :edit, :destroy]
+  before_action :authenticate_user!
+  before_action :admin_required
   def index
     @products = Product.all
   end
