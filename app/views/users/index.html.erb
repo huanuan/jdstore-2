@@ -1,0 +1,21 @@
+<table class="table table-boldered">
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= user.email %>
+      </td>
+      <td>
+        <%= user.updated_at %>
+      </td>
+      <td>
+        <%= link_to("destroy", users_path(user), method: :delete, data:{confirm: "Are you sure?"}) %> |
+        <% if user.is_admin? %>
+          <%= link_to("User", user_user_path(user), method: :post, class: "btn btn-xs btn-default")%>
+        <% else %>
+          <%= link_to("Admin", admin_user_path(user), method: :post, class: "btn btn-xs btn-default")%>
+        <% end %>
+
+      </td>
+    </tr>
+  <% end %>
+</table>

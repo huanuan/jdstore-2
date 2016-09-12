@@ -1,23 +1,24 @@
 
-<table class="table table-boldered">
-  <% @products.each do |product| %>
-    <tr>
-      <td>
-        <img src="<%=product.image.thumb %>" alt="" />
-      </td>
-      <td>
-        <%= link_to(product.title, product_path(product) )%>
-      </td>
-        <img src="<%=product.image.mobile %>" alt="" />
-      <td>
-        <%= link_to(product.price, product_path(product) )%>
-      </td>
-      <td>
-        <%= link_to(product.quantity, product_path(product) )%>
-      </td>
-      <td>
-        <%= product.created_at%>
-      </td>
-    </tr>
-  <% end %>
+<table >
+  <div class="col-md-10 col-md-offset-1" >
+      <% @products.each do |product| %>
+       <div class="col-md-3">
+         <div class="img">
+             <a href="<%= product_path(product) %>"><%= image_tag product.image.thumb, class:"img-grouded" %></a>
+         </div>
+         <div>
+           <span>
+           售价：<%= product.price %>
+           </span>
+           <span></span>
+           <span>
+           库存：<%= product.quantity %>
+           </span>
+         </div>
+         <div class="">
+           <%= link_to(product.title, product_path(product) )%>
+         </div>
+       </div>
+      <% end %>
+  </div>
 </table>
