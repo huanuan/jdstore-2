@@ -24,7 +24,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :carts
+  resources :carts do
+    collection do
+      post :checkout
+    end
+  end
 
   resources :cart_items do
     member do
@@ -34,5 +38,7 @@ Rails.application.routes.draw do
       post :des_item
     end
   end
+
+  resources :orders
 
 end

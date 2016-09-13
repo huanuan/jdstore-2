@@ -1,24 +1,17 @@
+<div class="container">
+  <% @products.each do |product| %>
+  <div class="col-sm-6 col-md-3 ">
 
-<table >
-  <div class="col-md-10 col-md-offset-1" >
-      <% @products.each do |product| %>
-       <div class="col-md-3">
-         <div class="img">
-             <a href="<%= product_path(product) %>"><%= image_tag product.image.thumb, class:"img-grouded" %></a>
-         </div>
-         <div>
-           <span>
-           售价：<%= product.price %>
-           </span>
-           <span></span>
-           <span>
-           库存：<%= product.quantity %>
-           </span>
-         </div>
-         <div class="">
-           <%= link_to(product.title, product_path(product) )%>
-         </div>
-       </div>
-      <% end %>
+    <div class="thumbnail">
+      <a href="<%= product_path(product) %>"><%= image_tag product.image.thumb, class:"img-grouded" %></a>
+      <div class="caption">
+        <h4><%= product.title %></h4>
+        <p>售价：<%= product.price %></p>
+        <p><%= link_to("加入购物车", add_to_cart_product_path(product), method: :post, class: "btn btn-danger") %>
+          <a href="#" class="btn btn-default" role="button">加入收藏夹</a></p>
+      </div>
+    </div>
+
   </div>
-</table>
+  <% end %>
+</div>
