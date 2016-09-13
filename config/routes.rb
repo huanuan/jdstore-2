@@ -25,4 +25,14 @@ Rails.application.routes.draw do
   end
 
   resources :carts
+
+  resources :cart_items do
+    member do
+      post :change_quantity
+      post :clear
+      post :add_item
+      post :des_item
+    end
+  end
+
 end
