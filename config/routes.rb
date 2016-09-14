@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   devise_for :users
+
   root "products#index"
+
   namespace :admin do
     resources :products do
       member do
@@ -8,6 +11,8 @@ Rails.application.routes.draw do
         post :hide
       end
     end
+
+    resources :orders
 
   end
 
